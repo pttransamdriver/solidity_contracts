@@ -30,7 +30,7 @@ The project contains several example contracts that showcase different aspects o
 
 1. Clone the repository
 2. Install dependencies:
-```bash
+```
 npm install
 ```
 
