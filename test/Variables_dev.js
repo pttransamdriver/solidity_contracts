@@ -46,3 +46,49 @@ describe('Example 3', () => {
     //await expect(contract.name).to.be.reverted;
   })
 })
+
+describe('Example 4', () => {
+  let contract
+
+  beforeEach(async ()=> {
+    const Contract = await ethers.getContractFactory('Variables_dev4')
+    contract = await Contract.deploy()
+  })
+
+  it('has a NAME constant', async () => {
+    expect(await contract.name()).to.equal('Example_name_Larry')
+  })
+
+  it('tracks the owner as immutable', async () => {
+    let accounts = await ethers.getSigners()
+    expect(await contract.owner()).to.equal(accounts[0].address)
+  })
+
+})
+
+describe('Example 5', () => {
+  let contract
+
+  beforeEach(async () => {
+    const Contract = await ethers.getContractFactory('Variables_dev5')
+    contract = await Contract.deploy()
+  })
+
+  it('demonstrates "this" global varable', async ()=> {
+    expect(await contract.contractAddress()).to.equal(contract.address)
+  })
+
+  it('demonstrates "msg" and "tx" global variables', async ()=> {
+    await contract.pay({ value: ether(1) })
+    expect(await contract.getBalance()).to.equal(ether(1))
+    let accounts = await ethers.getSigners()
+    expect(await contract.payer()).to.equal(accounts[0].address)
+    expect(await contract.origin()).to.equal(accounts[0].address)
+  })
+
+  it('demonstrates "block" global variable', async ()=> {
+    let result = await contract.getBlockInfo()
+    console.log(result)
+  })
+})
+
