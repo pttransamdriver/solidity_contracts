@@ -78,5 +78,5 @@ contract Variables_dev6 {
     string private name2 = "Name2";
     string internal name3 = "Name3";
     string public name4 = "Name4";
-    
 }
+

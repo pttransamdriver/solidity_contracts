@@ -92,3 +92,26 @@ describe('Example 5', () => {
   })
 })
 
+describe("Variables_dev6", () => {
+    let contract;
+    
+    beforeEach(async () => {
+        const Contract = await ethers.getContractFactory("Variables_dev6");
+        contract = await Contract.deploy();
+    });
+
+    describe("Variable visibility", () => {
+        it("should expose public variable name4", async () => {
+            // Public variables have automatic getters
+            expect(await contract.name4()).to.equal("Name4");
+        });
+
+        it("should not expose private or internal variables", async () => {
+            // Private and internal variables should not have getters
+            expect(contract.name1).to.be.undefined;  // default internal
+            expect(contract.name2).to.be.undefined;  // private
+            expect(contract.name3).to.be.undefined;  // internal
+        });
+    });
+});
+
