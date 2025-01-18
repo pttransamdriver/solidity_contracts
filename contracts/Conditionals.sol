@@ -21,7 +21,7 @@ contract Conditionals1 {
     }
 
     function evenOrOdd3(uint x) public pure returns (string memory) {
-        return x % 2 == 0 ? "even" : "odd";
+        return x % 2 == 0 ? "even" : "odd"; // Format is (x mod 2 equal to 0? "true output" : "False output")
     }
 
 }
