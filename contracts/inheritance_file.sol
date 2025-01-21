@@ -1,4 +1,7 @@
 // Base contract with core functionality
+// SPDX-License-Identifier: Unlicense
+pragma solidity ^0.8.0;
+
 contract Animal {
     // Internal state that derived contracts can access
     string internal name;
